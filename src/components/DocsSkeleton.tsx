@@ -38,7 +38,7 @@ function SkeletonParagraph({ lines = 4 }: { lines?: number }) {
 function SkeletonCode() {
   return (
     <div className="space-y-2">
-      <Shimmer className="h-4 w-1/4" /> 
+      <Shimmer className="h-4 w-1/4" />
       <div className="bg-muted/50 rounded-lg p-4 space-y-2">
         <Shimmer className="h-3 w-full" />
         <Shimmer className="h-3 w-5/6" />

@@ -1,7 +1,6 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-import Header from '../components/Header'
 import { RootProvider } from 'fumadocs-ui/provider/tanstack'
 import appCss from '../styles.css?url'
 import 'katex/dist/katex.css'
@@ -40,7 +39,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="font-sans antialiased wrap-anywhere selection:bg-[rgba(79,184,178,0.24)]">
-        <Header />
         <RootProvider>{children}</RootProvider>
         {/* <Footer /> */}
         <TanStackDevtools

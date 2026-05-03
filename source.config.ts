@@ -4,6 +4,7 @@ import rehypeKatex from 'rehype-katex'
 
 export const docs = defineDocs({
   dir: 'content/docs',
+
   docs: {
     postprocess: {
       includeProcessedMarkdown: true,
@@ -11,9 +12,9 @@ export const docs = defineDocs({
 
     async: true,
   },
-  meta:{
-    schema : metaSchema
-  }
+  meta: {
+    schema: metaSchema,
+  },
 })
 
 export default defineConfig({
@@ -21,5 +22,4 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
     rehypePlugins: (v) => [rehypeKatex, ...v],
   },
-
 })

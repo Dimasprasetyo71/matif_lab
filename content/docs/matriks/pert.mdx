@@ -1,0 +1,913 @@
+---
+title: 'Panduan Lengkap Matriks: Dari Konsep hingga Aplikasi'
+description: 'Pelajari matriks dari konsep dasar, sejarah perkembangan, jenis-jenis, operasi, determinan, invers, hingga aplikasi praktis dengan contoh dan pembahasan lengkap.'
+---
+
+import { Tabs } from 'fumadocs-ui/components/tabs'
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Card, Cards } from 'fumadocs-ui/components/card'
+import { InlineTOC } from 'fumadocs-ui/components/inline-toc'
+
+# Panduan Lengkap Memahami Matriks
+
+Pelajari segala hal tentang matriks: konsep, sejarah, operasi, dan aplikasi praktis dalam kehidupan nyata.
+
+<Callout type="info" title="Apa itu Matriks?">
+  Matriks adalah susunan bilangan, simbol, atau ekspresi yang disusun dalam
+  **baris dan kolom** berbentuk persegi panjang atau persegi. Bayangkan sebuah
+  tabel yang berisi angka-angka yang tersusun rapi dalam format yang
+  terstruktur.
+</Callout>
+
+---
+
+## 🎯 Pengenalan Matriks
+
+### Definisi dan Notasi Dasar
+
+Matriks adalah **susunan bilangan dalam baris dan kolom** yang membentuk struktur persegi panjang. Setiap angka dalam matriks disebut **elemen** atau **entri**.
+
+```
+        Kolom 1  Kolom 2  Kolom 3
+           ↓        ↓        ↓
+Baris 1 ⎡  2        4        6  ⎤
+Baris 2 ⎢  1        3        5  ⎥
+Baris 3 ⎣  7        8        9  ⎦
+
+Matriks 3×3 (3 baris, 3 kolom)
+```
+
+### Notasi Elemen Matriks
+
+Elemen dalam matriks dilambangkan dengan huruf kecil dan indeks:
+
+- **a<sub>ij</sub>** = elemen pada baris **i**, kolom **j**
+- **a₁₁** = 2 (baris 1, kolom 1)
+- **a₂₃** = 5 (baris 2, kolom 3)
+- **a₃₂** = 8 (baris 3, kolom 2)
+
+### Dimensi Matriks
+
+Ukuran matriks ditulis sebagai **m × n** dimana:
+
+- **m** = jumlah baris
+- **n** = jumlah kolom
+
+<Callout type="info">
+  Matriks dengan dimensi **2×3** memiliki 2 baris dan 3 kolom, menghasilkan 6
+  elemen secara total.
+</Callout>
+
+---
+
+## 📖 Sejarah Matriks
+
+Matriks bukanlah penemuan modern. Perkembangannya melibatkan berbagai peradaban dan berlangsung selama berabad-abad.
+
+### Cina Kuno (≈2000 SM)
+
+**Pelopor Pertama Matriks**
+
+Bangsa Cina adalah **pelopor penggunaan matriks pertama kali** dalam sejarah matematika.
+
+- 📚 Bukti tercatat dalam buku **"Jiuzhang Suanshu"** (九章算术) - "Sembilan Bab tentang Seni Matematika"
+- 📖 Diterbitkan pada masa dinasti **Han** (±200 SM - 200 M)
+- 🎯 Digunakan untuk **menyelesaikan sistem persamaan linear**
+- ⚙️ Metodenya mirip dengan **eliminasi Gauss** yang kita kenal hari ini
+- 🧮 Menggunakan "papan hitung" dengan batu atau batang untuk mengatur bilangan
+
+**Contoh Kasus:**
+Seorang pedagang memiliki beberapa jenis barang dengan harga dan jumlah berbeda. Mereka menggunakan matriks untuk menghitung transaksi dan mencari solusi optimal.
+
+### Gottfried Wilhelm Leibniz (1646-1716)
+
+**Filsuf & Matematikawan Jerman**
+
+- Mulai mengembangkan **notasi untuk matriks**
+- Karyanya belum terlalu dipublikasikan secara luas
+
+### Gabriel Cramer (1704-1752)
+
+**Matematikawan Swiss - Penemu Aturan Cramer**
+
+- 🏆 Memperkenalkan **Cramer's Rule** (Aturan Cramer)
+- 📜 Publikasi: "Introduction à l'analyse des lignes courbes" (1750)
+- 🎯 Metode untuk **menyelesaikan sistem persamaan linear** menggunakan determinan
+- ⭐ Sangat berguna untuk sistem dengan 2 atau 3 variabel
+
+**Rumus Cramer untuk 2×2:**
+
+```
+Jika ax + by = p
+   cx + dy = q
+
+Maka: x = |p b| ÷ |a b|    y = |a p| ÷ |a b|
+          |q d|   |c d|        |c q|   |c d|
+```
+
+### Era Keemasan Matriks
+
+**James Joseph Sylvester (1814-1897)**
+
+- 📝 **Menciptakan istilah "MATRIKS"** pada tahun **1850**
+- 🌐 Kata berasal dari bahasa Latin "mater" (ibu), berarti "wadah" atau "tempat asal"
+- 🔬 Kontribusi besar dalam **teori matriks dan determinan**
+- 🏫 Bekerja di Universitas Johns Hopkins dan Royal Military Academy
+
+**Arthur Cayley (1821-1895)**
+
+- 🚀 Mengembangkan **aljabar matriks modern**
+- 📚 Menerbitkan memoar penting pada tahun **1858**
+- ⭐ Menemukan **Teorema Cayley-Hamilton**: setiap matriks memenuhi persamaan karakteristiknya
+- 🤝 Kolaborasi intensif dengan Sylvester
+
+**Charles Hermite (1822-1901)**
+
+- 🔍 Mempelajari **matriks khusus** dan sifat-sifatnya
+- 📐 Mengembangkan teori matriks Hermitian (matriks bersifat khusus)
+
+**Georg Frobenius (1849-1917)**
+
+<Tabs>
+  - 📊 Memperdalam **teori matriks** - 💡 Memperkenalkan konsep **rank matriks**
+  - 🧮 Mengembangkan **teori bilinear form**
+</Tabs>
+
+### Era Komputasi & Modern
+
+**David Hilbert (1862-1943)**
+
+- 📐 Mengembangkan **teori ruang Hilbert**
+- ⚛️ Aplikasi dalam **mekanika kuantum**
+
+**John von Neumann (1903-1957)**
+
+- 🎮 Mengaplikasikan matriks dalam **teori permainan** (game theory)
+- 💻 Menggunakan matriks dalam pengembangan **komputer digital pertama**
+
+**Perkembangan Modern:**
+
+<Tabs>
+  - ✅ **1900-an**: Matriks digunakan dalam fisika kuantum - ✅ **1950-an**:
+  Komputer digital memungkinkan perhitungan matriks berskala besar - ✅
+  **1970-an**: Metode numerik matriks berkembang pesat - ✅
+  **1980-an-sekarang**: Aplikasi matriks meledak di AI, ML, grafika komputer,
+  dan berbagai bidang lainnya
+</Tabs>
+
+### Timeline Matriks
+
+| Tahun         | Tokoh/Peristiwa                 | Kontribusi                                      |
+| ------------- | ------------------------------- | ----------------------------------------------- |
+| ≈2000 SM      | Matematikawan Cina              | Penggunaan pertama konsep matriks               |
+| 1750          | Gabriel Cramer                  | Aturan Cramer untuk sistem persamaan            |
+| 1850          | James Sylvester                 | **Istilah "matriks" diciptakan**                |
+| 1858          | Arthur Cayley                   | Aljabar matriks modern, Teorema Cayley-Hamilton |
+| 1880          | Georg Frobenius                 | Konsep rank matriks                             |
+| 1920-1930     | David Hilbert, John von Neumann | Aplikasi dalam mekanika kuantum                 |
+| 1950-sekarang | Era Digital                     | Komputasi matriks skala besar, AI, ML           |
+
+<Callout type="success" title="Insight Sejarah">
+  Menarik bahwa matriks sudah ada sejak 2000 tahun lalu dalam bentuk primitif,
+  namun istilah resmi "matriks" baru diciptakan pada tahun 1850. Ini menunjukkan
+  bahwa matematika berkembang tidak hanya dari ide baru, tetapi juga dari
+  formalisasi konsep lama.
+</Callout>
+
+---
+
+## 🧮 Konsep Dasar Matriks
+
+### Elemen & Struktur
+
+<Callout type="info">
+  Setiap elemen dalam matriks memiliki **posisi unik** yang ditentukan oleh
+  baris dan kolomnya.
+</Callout>
+
+```
+        Kolom 1  Kolom 2  Kolom 3
+           ↓        ↓        ↓
+Baris 1 ⎡ a₁₁     a₁₂     a₁₃ ⎤
+Baris 2 ⎢ a₂₁     a₂₂     a₂₃ ⎥
+Baris 3 ⎣ a₃₁     a₃₂     a₃₃ ⎦
+```
+
+**Contoh Konkret:**
+
+```
+        Kolom 1  Kolom 2  Kolom 3
+           ↓        ↓        ↓
+Baris 1 ⎡  1       2       3  ⎤
+Baris 2 ⎢  4       5       6  ⎥
+Baris 3 ⎣  7       8       9  ⎦
+
+a₁₁ = 1    a₁₂ = 2    a₁₃ = 3
+a₂₁ = 4    a₂₂ = 5    a₂₃ = 6
+a₃₁ = 7    a₃₂ = 8    a₃₃ = 9
+```
+
+### Jenis-Jenis Matriks Berdasarkan Dimensi
+
+<Cards>
+  <Card title="Matriks Baris" description="Hanya memiliki 1 baris (1 × n)">
+    ``` B = [2 4 6 8] ```
+  </Card>
+  <Card title="Matriks Kolom" description="Hanya memiliki 1 kolom (m × 1)">
+    ``` C = [2] [4] [6] ```
+  </Card>
+  <Card title="Matriks Persegi" description="Jumlah baris = kolom (n × n)">
+    ``` S = [1 2] [3 4] ```
+  </Card>
+  <Card title="Matriks Persegi Panjang" description="Baris ≠ kolom (m × n)">
+    ``` R = [1 2 3] [4 5 6] ```
+  </Card>
+</Cards>
+
+### Diagonal Utama
+
+Dalam matriks persegi, **diagonal utama** adalah elemen-elemen dari sudut kiri atas ke sudut kanan bawah.
+
+```
+    ⎡ 1*  2   3 ⎤
+A = ⎢ 4   5*  6 ⎥  ← Diagonal utama: 1, 5, 9 (ditandai *)
+    ⎣ 7   8   9* ⎦
+```
+
+---
+
+## 🎨 Jenis-Jenis Matriks Khusus
+
+### Matriks Nol
+
+Semua elemennya adalah **0**.
+
+```
+    ⎡ 0  0  0 ⎤
+O = ⎢ 0  0  0 ⎥
+    ⎣ 0  0  0 ⎦
+```
+
+**Sifat:**
+
+- A + O = A (matriks identitas penjumlahan)
+- A × O = O
+
+### Matriks Identitas (I)
+
+Matriks persegi dengan **1** pada diagonal utama dan **0** di tempat lain.
+
+```
+    ⎡ 1  0  0 ⎤
+I = ⎢ 0  1  0 ⎥
+    ⎣ 0  0  1 ⎦
+```
+
+**Sifat:**
+
+- **A × I = A** (matriks identitas perkalian)
+- **I × A = A**
+- Seperti perkalian dengan angka 1 pada bilangan biasa
+
+### Matriks Diagonal
+
+Hanya elemen pada **diagonal utama yang memiliki nilai**, sisanya semua 0.
+
+```
+    ⎡ 3  0  0 ⎤
+D = ⎢ 0  5  0 ⎥
+    ⎣ 0  0  7 ⎦
+```
+
+**Cara Mudah Mengingat:** Hanya diagonal utama yang "hidup", sisanya mati (0).
+
+### Matriks Segitiga Atas
+
+Elemen **di bawah diagonal utama** semua 0.
+
+```
+    ⎡ 1  2  3 ⎤
+U = ⎢ 0  5  6 ⎥
+    ⎣ 0  0  9 ⎦
+```
+
+### Matriks Segitiga Bawah
+
+Elemen **di atas diagonal utama** semua 0.
+
+```
+    ⎡ 1  0  0 ⎤
+L = ⎢ 4  5  0 ⎥
+    ⎣ 7  8  9 ⎦
+```
+
+### Matriks Transpose (A^T)
+
+**Baris dan kolom ditukar posisinya.**
+
+```
+    ⎡ 1  2  3 ⎤
+A = ⎢ 4  5  6 ⎥  (2×3)
+    ⎣       ⎦
+
+Baris pertama A → Kolom pertama A^T
+Baris kedua A → Kolom kedua A^T
+
+        ⎡ 1  4 ⎤
+A^T =  ⎢ 2  5 ⎥  (3×2)
+        ⎣ 3  6 ⎦
+```
+
+**Cara Mudah:** Putar matriks 90°.
+
+**Sifat:**
+
+- **(A^T)^T = A** (transpose dari transpose = matriks awal)
+- **(A + B)^T = A^T + B^T**
+
+<Callout type="tip" title="Matriks Simetris">
+  Matriks yang sama dengan transposenya disebut **matriks simetris**: **A =
+  A^T** Contoh: ``` ⎡ 1 2 3 ⎤ A = ⎢ 2 4 5 ⎥ → A = A^T (simetris) ⎣ 3 5 6 ⎦ ```
+</Callout>
+
+---
+
+## ➕ Operasi Dasar Matriks
+
+### 1. Penjumlahan Matriks
+
+**Syarat:** Kedua matriks harus memiliki **dimensi yang sama**.
+
+**Cara:** Jumlahkan elemen yang **posisinya sama**.
+
+```
+    ⎡ 1  2 ⎤      ⎡ 5  6 ⎤      ⎡ 1+5  2+6 ⎤      ⎡ 6   8 ⎤
+A = ⎢ 3  4 ⎥  +   ⎢ 7  8 ⎥  =   ⎢ 3+7  4+8 ⎥  =   ⎢ 10  12 ⎥
+    ⎣ 5  6 ⎦      ⎣ 9  10 ⎦     ⎣ 5+9  6+10 ⎦     ⎣ 14  16 ⎦
+```
+
+**Sifat Penjumlahan:**
+
+- ✅ **Komutatif**: A + B = B + A
+- ✅ **Asosiatif**: (A + B) + C = A + (B + C)
+- ✅ **Identitas**: A + O = A (O = matriks nol)
+
+<Callout type="warning">
+  ❌ Jangan jumlahkan matriks dengan dimensi berbeda! Contoh: tidak boleh
+  menjumlahkan matriks 2×3 dengan 3×2.
+</Callout>
+
+### 2. Pengurangan Matriks
+
+Sama seperti penjumlahan, tetapi **dikurangi** instead of ditambah.
+
+```
+    ⎡ 7  8 ⎤      ⎡ 1  2 ⎤      ⎡ 6  6 ⎤
+A = ⎢ 9  10 ⎥  -   ⎢ 3  4 ⎥  =   ⎢ 6  6 ⎥
+    ⎣ 11 12 ⎦     ⎣ 5  6 ⎦     ⎣ 6  6 ⎦
+```
+
+### 3. Perkalian Skalar
+
+**Kalikan setiap elemen** matriks dengan sebuah bilangan (skalar).
+
+```
+    ⎡ 1  2 ⎤         ⎡ 3  6  ⎤
+3 × ⎢ 3  4 ⎥  =      ⎢ 9  12 ⎥
+    ⎣ 5  6 ⎦         ⎣ 15 18 ⎦
+```
+
+**Sifat:**
+
+- **c(A + B) = cA + cB**
+- **(c₁ + c₂)A = c₁A + c₂A**
+
+### 4. Perkalian Matriks ⭐ (PALING PENTING)
+
+**Syarat:** Kolom matriks pertama **HARUS SAMA** dengan baris matriks kedua.
+
+**A (m×n) × B (n×p) = C (m×p)**
+
+<Callout type="info">
+  Jumlah kolom A harus sama dengan jumlah baris B. Jika tidak, perkalian tidak
+  bisa dilakukan!
+</Callout>
+
+#### Cara Perkalian: Baris × Kolom
+
+```
+    ⎡ 1  2 ⎤      ⎡ 5  6 ⎤
+A = ⎢ 3  4 ⎥  ×   ⎢ 7  8 ⎥  = ?
+    ⎣      ⎦      ⎣      ⎦
+
+Langkah 1: Baris 1 A × Kolom 1 B
+c₁₁ = (1×5) + (2×7) = 5 + 14 = 19
+
+Langkah 2: Baris 1 A × Kolom 2 B
+c₁₂ = (1×6) + (2×8) = 6 + 16 = 22
+
+Langkah 3: Baris 2 A × Kolom 1 B
+c₂₁ = (3×5) + (4×7) = 15 + 28 = 43
+
+Langkah 4: Baris 2 A × Kolom 2 B
+c₂₂ = (3×6) + (4×8) = 18 + 32 = 50
+
+Hasil:
+    ⎡ 19  22 ⎤
+C = ⎢ 43  50 ⎥
+    ⎣       ⎦
+```
+
+**Sifat Perkalian:**
+
+- ❌ **TIDAK komutatif**: A × B ≠ B × A (urutan penting!)
+- ✅ **Asosiatif**: (A × B) × C = A × (B × C)
+- ✅ **Distributif**: A × (B + C) = (A×B) + (A×C)
+- ✅ **Identitas**: A × I = A dan I × A = A
+
+<Callout type="tip" title="Tips Perkalian">
+  Gunakan metode baris-kolom: tunjuk baris dengan jari kiri, kolom dengan jari
+  kanan, kalikan bersamaan. Ini membuat proses lebih visual dan mudah dipahami.
+</Callout>
+
+---
+
+## 🔢 Determinan dan Invers Matriks
+
+### Determinan (det(A) atau |A|)
+
+Determinan adalah **nilai khusus** dari matriks persegi yang memiliki banyak kegunaan penting.
+
+#### Determinan Matriks 2×2
+
+**Formula:**
+
+```
+    ⎡ a  b ⎤
+A = ⎢ c  d ⎥
+
+det(A) = ad - bc
+```
+
+**Cara Mudah Mengingat:**
+
+- Kalikan **diagonal utama** (a × d)
+- Kurangi dengan **diagonal lain** (b × c)
+
+**Contoh:**
+
+```
+    ⎡ 3  5 ⎤
+A = ⎢ 2  4 ⎥
+
+det(A) = (3×4) - (5×2) = 12 - 10 = 2
+```
+
+#### Determinan Matriks 3×3 (Metode Sarrus)
+
+**Formula:**
+
+```
+    ⎡ a  b  c ⎤
+A = ⎢ d  e  f ⎥
+    ⎣ g  h  i ⎦
+
+det(A) = aei + bfg + cdh - ceg - afh - bdi
+```
+
+**Cara Mudah:**
+
+1. Tulis elemen diagonal dari kiri atas ke kanan bawah (aei, bfg, cdh) → **POSITIF**
+2. Tulis elemen diagonal dari kanan atas ke kiri bawah (ceg, afh, bdi) → **NEGATIF**
+3. Jumlahkan semuanya
+
+**Contoh:**
+
+```
+    ⎡ 1  2  3 ⎤
+A = ⎢ 4  5  6 ⎥
+    ⎣ 7  8  9 ⎦
+
+det(A) = (1×5×9) + (2×6×7) + (3×4×8)
+         - (3×5×7) - (1×6×8) - (2×4×9)
+       = 45 + 84 + 96 - 105 - 48 - 72
+       = 0
+
+Determinan = 0 → Matriks SINGULAR (tidak punya invers)
+```
+
+<Callout type="warning">
+  ❌ **Determinan = 0** berarti matriks adalah **singular** dan **tidak memiliki
+  invers**. Ini terjadi ketika baris atau kolom matriks adalah kombinasi linear
+  dari baris/kolom lain.
+</Callout>
+
+### Invers Matriks (A⁻¹)
+
+**Invers** dari matriks A adalah matriks yang ketika dikalikan dengan A menghasilkan **matriks identitas**.
+
+```
+A × A⁻¹ = I
+A⁻¹ × A = I
+```
+
+#### Syarat Invers
+
+1. Matriks harus **persegi** (m = n)
+2. **det(A) ≠ 0** (non-singular)
+
+#### Invers Matriks 2×2
+
+**Formula:**
+
+```
+    ⎡ a  b ⎤
+A = ⎢ c  d ⎥
+
+A⁻¹ = 1/(ad-bc) × ⎡  d  -b ⎤
+                   ⎢ -c   a ⎥
+```
+
+**Contoh:**
+
+```
+    ⎡ 3  5 ⎤
+A = ⎢ 2  4 ⎥
+
+Langkah 1: det(A) = (3×4) - (5×2) = 12 - 10 = 2
+
+Langkah 2: A⁻¹ = 1/2 × ⎡  4  -5 ⎤  =  ⎡ 2   -2.5 ⎤
+                        ⎢ -2   3 ⎥     ⎢ -1   1.5 ⎥
+
+Verifikasi: A × A⁻¹ = I ✓
+```
+
+<Callout type="success" title="Verifikasi Invers">
+  Selalu verifikasi dengan **A × A⁻¹ = I** untuk memastikan jawaban Anda benar!
+</Callout>
+
+---
+
+## 🌍 Aplikasi Praktis Matriks
+
+Matriks bukan hanya teori, tetapi **alat praktis** yang digunakan di berbagai bidang.
+
+<Cards>
+  <Card
+    title="🎮 Grafika Komputer"
+    description="Transformasi rotasi, translasi, scaling untuk animasi 3D dan game development"
+  />
+  <Card
+    title="🤖 Machine Learning & AI"
+    description="Neural networks, deep learning, computer vision menggunakan matriks sebagai fondasi"
+  />
+  <Card
+    title="💰 Ekonomi & Bisnis"
+    description="Input-output analysis, supply chain optimization, portfolio management"
+  />
+  <Card
+    title="⚙️ Teknik & Fisika"
+    description="Analisis struktur, mekanika kuantum, persamaan diferensial"
+  />
+  <Card
+    title="🔐 Keamanan & Kriptografi"
+    description="Enkripsi hill cipher, transformasi digital yang aman"
+  />
+  <Card
+    title="📡 Jaringan & Telekomunikasi"
+    description="Representasi jaringan, routing protocols, bandwidth optimization"
+  />
+</Cards>
+
+### 1. Grafika Komputer - Rotasi 2D
+
+```
+Rotasi 90° pada bidang 2D:
+    ⎡ 0  -1 ⎤
+R = ⎢ 1   0 ⎥
+
+Jika titik P = (2, 3), maka rotasinya:
+    ⎡ 0  -1 ⎤   ⎡ 2 ⎤   ⎡ -3 ⎤
+    ⎢ 1   0 ⎥ × ⎢ 3 ⎥ = ⎢ 2 ⎥
+
+Titik baru: (-3, 2)
+```
+
+### 2. Machine Learning - Matrix dalam Neural Network
+
+```
+Layer Neural Network:
+Output = Activation(Weight × Input + Bias)
+
+Dimana Weight adalah matriks yang berisi parameter pembelajaran.
+Perkalian matriks ini dilakukan jutaan kali untuk melatih AI.
+```
+
+### 3. Sistem Persamaan Linear
+
+```
+Problem:
+2x + 3y = 8
+4x + 5y = 14
+
+Bentuk Matriks:
+⎡ 2  3 ⎤   ⎡ x ⎤   ⎡ 8  ⎤
+⎢ 4  5 ⎥ × ⎢ y ⎥ = ⎢ 14 ⎥
+
+Dapat diselesaikan dengan invers atau metode lain.
+```
+
+<Callout type="info">
+  **Sistem persamaan linear** adalah salah satu aplikasi paling fundamental dari
+  matriks. Hampir semua problem engineer dan sains menggunakan konsep ini.
+</Callout>
+
+### 4. Matriks Transisi (Markov Chain)
+
+```
+Contoh: Prediksi Cuaca
+
+P = ⎡ 0.7  0.3 ⎤  Jika hari ini cerah:
+    ⎢ 0.4  0.6 ⎥  • 70% besok cerah
+                   • 30% besok hujan
+
+              Jika hari ini hujan:
+              • 40% besok cerah
+              • 60% besok hujan
+```
+
+---
+
+## 📝 Contoh Soal & Pembahasan
+
+### Soal 1: Penjumlahan Matriks
+
+<Callout type="info" title="Soal">
+```
+    ⎡ 1  2  3 ⎤      ⎡ 4  5  6 ⎤
+A = ⎢ 4  5  6 ⎥      ⎢ 7  8  9 ⎥
+    ⎣ 7  8  9 ⎦  B = ⎣ 1  2  3 ⎦
+
+Hitunglah A + B
+
+```
+</Callout>
+
+**Pembahasan:**
+
+Karena kedua matriks memiliki dimensi yang sama (3×3), kita bisa menjumlahkan:
+
+```
+
+A + B = ⎡ 1+4 2+5 3+6 ⎤ ⎡ 5 7 9 ⎤
+⎢ 4+7 5+8 6+9 ⎥ = ⎢ 11 13 15 ⎥
+⎣ 7+1 8+2 9+3 ⎦ ⎣ 8 10 12 ⎦
+
+```
+
+**Jawaban:**
+```
+
+    ⎡ 5   7   9  ⎤
+
+A+B=⎢ 11 13 15 ⎥
+⎣ 8 10 12 ⎦
+
+```
+
+---
+
+### Soal 2: Perkalian Matriks
+
+<Callout type="info" title="Soal">
+```
+
+    ⎡ 2  3 ⎤      ⎡ 1  4 ⎤
+
+A = ⎢ 1 4 ⎥ ⎢ 2 3 ⎥
+⎣ 5 2 ⎦ B = ⎣ ⎦
+
+Hitunglah A × B
+
+```
+</Callout>
+
+**Pembahasan:**
+
+A adalah 3×2, B adalah 2×2 → Hasil akan 3×2 ✅
+
+```
+
+Elemen (1,1): (2×1) + (3×2) = 2 + 6 = 8
+Elemen (1,2): (2×4) + (3×3) = 8 + 9 = 17
+
+Elemen (2,1): (1×1) + (4×2) = 1 + 8 = 9
+Elemen (2,2): (1×4) + (4×3) = 4 + 12 = 16
+
+Elemen (3,1): (5×1) + (2×2) = 5 + 4 = 9
+Elemen (3,2): (5×4) + (2×3) = 20 + 6 = 26
+
+```
+
+**Jawaban:**
+```
+
+      ⎡ 8   17 ⎤
+
+A×B = ⎢ 9 16 ⎥
+⎣ 9 26 ⎦
+
+```
+
+---
+
+### Soal 3: Determinan Matriks 2×2
+
+<Callout type="info" title="Soal">
+```
+
+    ⎡ 5  2 ⎤
+
+A = ⎢ 3 4 ⎥
+
+Tentukan det(A)
+
+```
+</Callout>
+
+**Pembahasan:**
+
+Gunakan formula: det(A) = ad - bc
+
+```
+
+det(A) = (5 × 4) - (2 × 3)
+= 20 - 6
+= 14
+
+```
+
+**Jawaban:**
+- **det(A) = 14**
+- Matriks ini **non-singular** (memiliki invers)
+
+---
+
+### Soal 4: Invers Matriks 2×2
+
+<Callout type="info" title="Soal">
+```
+
+    ⎡ 2  1 ⎤
+
+A = ⎢ 5 3 ⎥
+
+Tentukan A⁻¹
+
+```
+</Callout>
+
+**Pembahasan:**
+
+**Langkah 1:** Hitung determinan
+```
+
+det(A) = (2×3) - (1×5) = 6 - 5 = 1
+
+```
+
+**Langkah 2:** Terapkan formula invers
+```
+
+A⁻¹ = 1/det(A) × ⎡ d -b ⎤
+⎢ -c a ⎥
+
+A⁻¹ = 1/1 × ⎡ 3 -1 ⎤ = ⎡ 3 -1 ⎤
+⎢ -5 2 ⎥ ⎢ -5 2 ⎥
+
+```
+
+**Langkah 3:** Verifikasi A × A⁻¹ = I
+```
+
+⎡ 2 1 ⎤ × ⎡ 3 -1 ⎤ = ⎡ 1 0 ⎤ ✓
+⎢ 5 3 ⎥ ⎢ -5 2 ⎥ ⎢ 0 1 ⎥
+
+```
+
+**Jawaban:**
+```
+
+A⁻¹ = ⎡ 3 -1 ⎤
+⎢ -5 2 ⎥
+
+```
+
+---
+
+### Soal 5: Aplikasi - Sistem Persamaan Linear
+
+<Callout type="info" title="Soal">
+**Sebuah toko menjual dua jenis barang:**
+- Minggu lalu: 10 unit A + 15 unit B = Rp 1.000.000
+- Minggu ini: 20 unit A + 10 unit B = Rp 1.200.000
+
+Tentukan harga per unit masing-masing barang!
+
+Misal: x = harga A per unit, y = harga B per unit
+</Callout>
+
+**Pembahasan:**
+
+**Langkah 1:** Bentuk persamaan
+```
+
+10x + 15y = 1.000.000 ... (1)
+20x + 10y = 1.200.000 ... (2)
+
+```
+
+**Langkah 2:** Eliminasi
+```
+
+Dari (1) × 2: 20x + 30y = 2.000.000
+Dari (2): 20x + 10y = 1.200.000
+Kurangi: 20y = 800.000
+y = 40.000
+
+```
+
+**Langkah 3:** Substitusi ke persamaan (1)
+```
+
+10x + 15(40.000) = 1.000.000
+10x + 600.000 = 1.000.000
+10x = 400.000
+x = 40.000
+
+```
+
+**Jawaban:**
+- **Harga Barang A: Rp 40.000 per unit**
+- **Harga Barang B: Rp 40.000 per unit**
+
+---
+
+## 💡 Tips & Trik Mengerjakan Soal Matriks
+
+<Cards>
+  <Card title="✅ Cek Dimensi" description="Selalu verifikasi dimensi matriks sebelum operasi. Penjumlahan harus sama, perkalian: kolom A = baris B" />
+  <Card title="✅ Metode Baris-Kolom" description="Untuk perkalian, gunakan teknik visual: tunjuk baris dengan jari kiri, kolom dengan jari kanan" />
+  <Card title="✅ Determinan 2×2" description="Ingat: ad - bc. Diagonal utama positif, diagonal lain negatif" />
+  <Card title="✅ Verifikasi Invers" description="Selalu hitung A × A⁻¹ untuk memastikan hasilnya adalah I (matriks identitas)" />
+  <Card title="✅ Gunakan Properti" description="Manfaatkan A + O = A, A × I = A untuk menyederhanakan soal" />
+  <Card title="✅ Determinan = 0?" description="Jika det(A) = 0, matriks singular dan tidak punya invers" />
+</Cards>
+
+---
+
+## 📚 Kesimpulan
+
+Matriks adalah **fondasi matematika modern** yang:
+
+✅ **Mudah dipelajari** dari konsep dasar
+✅ **Powerful** untuk menyelesaikan masalah kompleks
+✅ **Universal** digunakan di berbagai disiplin ilmu
+✅ **Essential** untuk AI, grafika, fisika, ekonomi
+✅ **Menyenangkan** ketika dipahami dengan benar
+
+Dengan menguasai matriks, Anda telah membuka pintu ke pemahaman yang lebih dalam tentang:
+- Aljabar linear dan matematika lanjutan
+- Machine learning dan artificial intelligence
+- Grafika komputer dan visualisasi 3D
+- Fisika kuantum dan mekanika lanjutan
+- Ekonomi dan optimisasi bisnis
+
+---
+
+## 🔗 Referensi & Bacaan Lanjutan
+
+**Sejarah:**
+- "The Rise and Development of the Theory of Matrices" - Thomas Muir (1881)
+- Biografi Arthur Cayley dan James Sylvester
+
+**Buku Teks:**
+- "Introduction to Linear Algebra" - Gilbert Strang
+- "Linear Algebra Done Right" - Sheldon Axler
+- "Matrix Analysis" - Roger A. Horn & Charles R. Johnson
+
+**Aplikasi Praktis:**
+- "Deep Learning" - Goodfellow, Bengio, Courville
+- "Computer Graphics Principles and Practice"
+
+**Online Resources:**
+- Khan Academy: Linear Algebra
+- MIT OpenCourseWare: Mathematics for Computer Science
+- 3Blue1Brown YouTube: Essence of Linear Algebra
+
+---
+
+**Dibuat dengan ❤️ untuk memudahkan pemahaman Matriks menggunakan Fumadocs**
+
+**Semoga panduan ini membantu Anda menguasai matriks. Happy learning!* 🚀
+```
